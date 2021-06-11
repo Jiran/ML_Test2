@@ -168,6 +168,7 @@ class GAN:
         if not os.path.exists('new_images'):
             os.mkdir('new_images')
         plt.savefig(save_name, bbox_inches='tight', pad_inches=0)
+        print("an image saved!)")
         plt.pause(0.0000000001)
         plt.show()
 
@@ -251,9 +252,13 @@ class GAN:
                 batches = np.append(batches, current_batch)
 
                 # Each 50 batches show and save images
-                if ((batch_number + 1) % 50 == 0 and
+                print("batch number", batch_number)
+                print("current batch size", current_batch_size)
+                print("self batch size", self.batch_size)
+                if ((batch_number + 1) % 2 == 0 and
                         current_batch_size == self.batch_size):
                     self.save_images(generated_images, epoch, batch_number)
+                    
 
                 time_elapsed = time.time() - start_time
 
